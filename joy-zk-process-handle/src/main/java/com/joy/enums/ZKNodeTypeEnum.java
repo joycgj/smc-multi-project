@@ -9,7 +9,10 @@ package com.joy.enums;
  * http://221.179.173.197/api/function/notify.go?code=channelNews&action=DEL&channelId=9&data=573344:14152432
  */
 public enum ZKNodeTypeEnum {
-    ;
+    /**
+     * 即时新闻 *
+     */
+    CHANNEL_NEWS("channelNews", "/mpaper/channelNews", 2, false),;
 
     /**
      * code 用来标识通知的类型;比如:升级,loading;
@@ -55,7 +58,7 @@ public enum ZKNodeTypeEnum {
     }
 
     public static ZKNodeTypeEnum getZKNodeByCode(String code) {
-        for (ZKNodeTypeEnum each: ZKNodeTypeEnum.values()) {
+        for (ZKNodeTypeEnum each : ZKNodeTypeEnum.values()) {
             if (code.equals(each.getCode())) {
                 return each;
             }

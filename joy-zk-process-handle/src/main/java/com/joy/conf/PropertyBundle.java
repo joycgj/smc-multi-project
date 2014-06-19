@@ -1,5 +1,6 @@
 package com.joy.conf;
 
+import com.joy.exception.ResourceLoadException;
 import com.joy.exception.ServerException;
 
 import java.io.IOException;

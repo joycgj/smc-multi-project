@@ -1,6 +1,7 @@
 package com.joy.service;
 
 import com.joy.conf.SysConfig;
+import com.joy.zookeeper.ZooKeeperOperator;
 import org.apache.log4j.Logger;
 
 /**
@@ -11,7 +12,7 @@ import org.apache.log4j.Logger;
  * To change this template use File | Settings | File Templates.
  */
 public class ServiceFactory {
-    private Logger logger = Logger.getLogger(ServiceFactory.class);
+    private static Logger logger = Logger.getLogger(ServiceFactory.class);
 
     private final static IChannelService channelService;
 
