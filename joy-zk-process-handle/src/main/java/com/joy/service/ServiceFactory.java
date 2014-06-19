@@ -27,4 +27,8 @@ public class ServiceFactory {
             logger.error("[ServiceFactory.static{}]:Init zooKeeperOperator throws exception.", e);
         }
     }
+
+    public static ZooKeeperOperator getZooKeeperOperator() {
+        return zooKeeperOperator;
+    }
 }

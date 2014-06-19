@@ -21,7 +21,7 @@ public interface IZKNotifyService {
      * @param type
      * @param method
      */
-    public void initWatchZKNodeUpdateCache(final Object object, ZKNodeTypeEnum zkNode, NotifyTypeEnum type, Method method);
+    public void initWatchZKNodeUpdateCache(final Object object, final ZKNodeTypeEnum zkNode, final NotifyTypeEnum type, final Method method);
 
     /**
      * 设置zkNode的值
