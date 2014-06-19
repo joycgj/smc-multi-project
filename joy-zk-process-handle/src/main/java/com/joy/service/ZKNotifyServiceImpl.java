@@ -106,7 +106,14 @@ public class ZKNotifyServiceImpl implements IZKNotifyService {
 
     @Override
     public boolean setZKNode(String code, String queryString) {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+        Stat stat = null;
+        ZKNodeTypeEnum node = ZKNodeTypeEnum.getZKNodeByCode(code);
+        logger.info("[ZKNotifyServiceImpl.setZKNode]:Recieve CMS notify.code="+code+",queryString="+queryString);
+        if (node == null) {
+            logger.error("[zkNotify-setZKNode]: ZkNodeTypeEnum is not exist!code="+code);
+            return false;
+        }
+        return false;
     }
 }
 
