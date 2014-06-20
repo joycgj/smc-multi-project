@@ -14,6 +14,7 @@
 
     <properties>
         <main.version>1.0-SNAPSHOT</main.version>
+        <spring.version>3.0.0.RELEASE</spring.version>
     </properties>
 
     <repositories>

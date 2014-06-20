@@ -16,10 +16,13 @@ public class ServiceFactory {
 
     private final static IChannelService channelService;
 
+    private final static IZKNotifyService zkNotifyService;
+
     private static ZooKeeperOperator zooKeeperOperator;
 
     static {
         channelService = new ChannelServiceImpl();
+        zkNotifyService = new ZKNotifyServiceImpl();
 
         try {
             zooKeeperOperator = new ZooKeeperOperator(SysConfig.ZkAddress);
@@ -30,5 +33,9 @@ public class ServiceFactory {
 
     public static ZooKeeperOperator getZooKeeperOperator() {
         return zooKeeperOperator;
+    }
+
+    public static IZKNotifyService getZkNotifyService() {
+        return zkNotifyService;
     }
 }
