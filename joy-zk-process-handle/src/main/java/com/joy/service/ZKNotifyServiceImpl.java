@@ -2,6 +2,7 @@ package com.joy.service;
 
 import com.joy.enums.NotifyTypeEnum;
 import com.joy.enums.ZKNodeTypeEnum;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.zookeeper.AsyncCallback.DataCallback;
@@ -58,7 +59,7 @@ public class ZKNotifyServiceImpl implements IZKNotifyService {
                                     for (String query : querys) {
                                         String[] param = StringUtils.split(query, "=");
                                         if (param.length == 2) {
-                                            param.put(param[0], param[1]);
+                                            params.put(param[0], param[1]);
                                         }
                                     }
                                 }
@@ -88,16 +89,16 @@ public class ZKNotifyServiceImpl implements IZKNotifyService {
         try {
             stat = ServiceFactory.getZooKeeperOperator().exists(key, false); // 判断zk节点
             if (stat == null) {
-                logger.error("[zkNotify-setZKNodeValue]: zknode ["+key+"] not exist !!!");
+                logger.error("[zkNotify-setZKNodeValue]: zknode [" + key + "] not exist !!!");
                 return false;
             }
             ServiceFactory.getZooKeeperOperator().set(key, value.getBytes());
         } catch (KeeperException e) {
-            logger.error("[zkNotify-setZKNodeValue]: zknode exist KeeperException: "+e.getMessage());
+            logger.error("[zkNotify-setZKNodeValue]: zknode exist KeeperException: " + e.getMessage());
             e.printStackTrace();
             return false;
         } catch (InterruptedException e) {
-            logger.error("[zkNotify-setZKNodeValue]: zknode exist InterruptedException: "+e.getMessage());
+            logger.error("[zkNotify-setZKNodeValue]: zknode exist InterruptedException: " + e.getMessage());
             e.printStackTrace();
             return false;
         }
@@ -108,12 +109,57 @@ public class ZKNotifyServiceImpl implements IZKNotifyService {
     public boolean setZKNode(String code, String queryString) {
         Stat stat = null;
         ZKNodeTypeEnum node = ZKNodeTypeEnum.getZKNodeByCode(code);
-        logger.info("[ZKNotifyServiceImpl.setZKNode]:Recieve CMS notify.code="+code+",queryString="+queryString);
+        logger.info("[ZKNotifyServiceImpl.setZKNode]:Recieve CMS notify.code=" + code + ",queryString=" + queryString);
         if (node == null) {
-            logger.error("[zkNotify-setZKNode]: ZkNodeTypeEnum is not exist!code="+code);
+            logger.error("[zkNotify-setZKNode]: ZkNodeTypeEnum is not exist!code=" + code);
             return false;
         }
-        return false;
+        String path = node.getPath();
+        if (StringUtils.isBlank(path)) {
+            logger.error("[zkNotify-setZKNode]: Path is not exist!path:" + path);
+            return false;
+        }
+
+        // 如果是分布式缓存，只在收到CMS通知的机器上执行
+        if (node.getType() == 1 || node.getType() == 2) {
+            Map<String, String> params = new HashMap<String, String>();
+            if (StringUtils.isNotBlank(queryString)) {
+                String[] querys = StringUtils.split(queryString, "&");
+                for (String query : querys) {
+                    String[] param = StringUtils.split(query, "=");
+                    if (param.length == 2) {
+                        params.put(param[0], param[1]);
+                    }
+                }
+            }
+            List<NotifyBean> beans = distributeNotifyBeans.get(node);
+            if (CollectionUtils.isEmpty(beans)) {
+                for (NotifyBean each : beans) {
+                    each.execute(params);
+                }
+            }
+        }
+
+        try {
+            if (node.getType() != 1) {
+                stat = ServiceFactory.getZooKeeperOperator().exists(path, false); // 判断zk节点
+                if (stat == null) {
+                    logger.error("[zkNotify-setZKNode]: zknode [" + path + "] not exist !!!");
+                    return false;
+                } else {
+                    ServiceFactory.getZooKeeperOperator().set(path, queryString.getBytes());
+                }
+            }
+        } catch (KeeperException e) {
+            logger.error("[zkNotify-setZKNode]: zknode exist KeeperException: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        } catch (InterruptedException e) {
+            logger.error("[zkNotify-setNode]: zknode exist InterruptedException: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 }
 
