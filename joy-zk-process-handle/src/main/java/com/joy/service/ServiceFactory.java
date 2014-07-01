@@ -1,6 +1,7 @@
 package com.joy.service;
 
 import com.joy.conf.SysConfig;
+import com.joy.processor.InitNotifyProcessor;
 import com.joy.zookeeper.ZooKeeperOperator;
 import org.apache.log4j.Logger;
 
@@ -29,6 +30,10 @@ public class ServiceFactory {
         } catch (Exception e) {
             logger.error("[ServiceFactory.static{}]:Init zooKeeperOperator throws exception.", e);
         }
+
+        // 初始化通知服务
+        InitNotifyProcessor.initNotify(channelService);
+        InitNotifyProcessor.initNotify(zkNotifyService);
     }
 
     public static ZooKeeperOperator getZooKeeperOperator() {
@@ -37,5 +42,9 @@ public class ServiceFactory {
 
     public static IZKNotifyService getZkNotifyService() {
         return zkNotifyService;
+    }
+
+    public static IChannelService getChannelService() {
+        return channelService;
     }
 }

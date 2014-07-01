@@ -13,6 +13,7 @@ public class SysConfig {
     private static PropertyBundle bundle = new PropertyBundle(DEFAULT_FILE_NAME);
 
     public static String ZkAddress = getString("zk.server");
+    public static boolean IS_TEST_MACHINE = getBoolean("IS_TEST_MACHINE");
 
     /**
      * 获取key对应的字符串值
@@ -21,5 +22,14 @@ public class SysConfig {
      */
     public static String getString(String key) {
         return bundle.getProperty(key);
+    }
+
+    /**
+     * 获取bool值
+     * @param key
+     * @return
+     */
+    public static Boolean getBoolean(String key) {
+        return Boolean.parseBoolean(bundle.getProperty(key));
     }
 }
