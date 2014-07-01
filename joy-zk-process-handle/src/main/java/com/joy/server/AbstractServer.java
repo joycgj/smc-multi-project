@@ -202,7 +202,10 @@ public abstract class AbstractServer {
     }
 
     private String getShadedWarUrl() {
-        String _urlStr = getResource(WEB_XML).toString();
+//        String _urlStr = getResource(WEB_XML).toString();
+        URL u = getResource(WEB_XML);
+        System.out.println(u);
+        String _urlStr = u.toString();
         // Strip off "WEB-INF/web.xml"
         System.out.println("[AbstractServer.getShadedWarUrl]:url=" + _urlStr);
         return _urlStr.substring(0, _urlStr.length() - 15);
