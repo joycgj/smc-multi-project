@@ -10,6 +10,7 @@
     <modules>
         <module>joy-zookeeper</module>
         <module>joy-zk-process-handle</module>
+		<module>joy-kestrel</module>
     </modules>
 
     <properties>
