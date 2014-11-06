@@ -11,6 +11,7 @@
         <module>joy-zookeeper</module>
         <module>joy-zk-process-handle</module>
 		<module>joy-kestrel</module>
+		<module>joy-restLiClientUtil</module>
     </modules>
 
     <properties>
