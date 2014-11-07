@@ -12,6 +12,7 @@
         <module>joy-zk-process-handle</module>
 		<module>joy-kestrel</module>
 		<module>joy-restLiClientUtil</module>
+		<module>joy-d2-quickstart</module>
     </modules>
 
     <properties>
