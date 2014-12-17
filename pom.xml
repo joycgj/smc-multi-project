@@ -13,6 +13,7 @@
 		<module>joy-kestrel</module>
 		<module>joy-restLiClientUtil</module>
 		<module>joy-d2-quickstart</module>
+        <module>joy-design-pattern-yanmo</module>
     </modules>
 
     <properties>
