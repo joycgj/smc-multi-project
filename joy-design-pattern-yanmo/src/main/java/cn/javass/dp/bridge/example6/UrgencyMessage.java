@@ -10,7 +10,7 @@ public class UrgencyMessage extends AbstractMessage {
 
     @Override
     public void sendMessage(String message, String toUser) {
-        message = "加急" + message;
+        message = "加急： " + message;
         super.sendMessage(message, toUser);
     }
 
