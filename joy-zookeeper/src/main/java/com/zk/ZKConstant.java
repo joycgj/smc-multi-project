@@ -8,6 +8,6 @@ package com.zk;
  * To change this template use File | Settings | File Templates.
  */
 public class ZKConstant {
-    public static final String ZK_SERVER = "10.1.156.26";
+    public static final String ZK_SERVER = "10.0.132.201:2181,10.0.132.201:2182,10.0.132.201:2183";
 
 }

@@ -10,6 +10,7 @@ import java.util.Map;
  */
 public class SecurityMgr {
     private static SecurityMgr securityMgr = new SecurityMgr();
+
     private SecurityMgr() {
     }
 
@@ -21,11 +22,12 @@ public class SecurityMgr {
      * 在运行期间，用来存放登录人员对应的权限，
      * 在Web应用中，这些数据通常会存放到session中
      */
-    private Map<String,Collection<AuthorizationModel>> map =
-            new HashMap<String,Collection<AuthorizationModel>>();
+    private Map<String, Collection<AuthorizationModel>> map =
+            new HashMap<String, Collection<AuthorizationModel>>();
 
     /**
      * 模拟登录的功能
+     *
      * @param user 登录的用户
      */
     public void login(String user) {
@@ -36,9 +38,10 @@ public class SecurityMgr {
 
     /**
      * 判断某用户对某个安全实体是否拥有某权限
-     * @param user 被检测权限的用户
+     *
+     * @param user           被检测权限的用户
      * @param securityEntity 安全实体
-     * @param permit 权限
+     * @param permit         权限
      * @return true表示拥有相应权限，false表示没有相应权限
      */
     public boolean hasPermit(String user, String securityEntity, String permit) {
@@ -49,7 +52,7 @@ public class SecurityMgr {
         }
         for (AuthorizationModel am : col) {
             //输出当前实例，看看是否同一个实例对象
-            System.out.println("am==" + am);
+            System.out.println("am==" + am + ", user=" + am.getUser() + ", securityEntity=" + am.getSecurityEntity() + ", permit=" + am.getPermit());
             if (am.getSecurityEntity().equals(securityEntity)
                     && am.getPermit().equals(permit)) {
                 return true;
@@ -60,6 +63,7 @@ public class SecurityMgr {
 
     /**
      * 从数据库中获取某人所拥有的权限
+     *
      * @param user 需要获取所拥有的权限的人员
      * @return 某人所拥有的权限
      */
@@ -68,7 +72,7 @@ public class SecurityMgr {
 
         for (String s : TestDB.colDB) {
             String ss[] = s.split(",");
-            if(ss[0].equals(user)){
+            if (ss[0].equals(user)) {
                 AuthorizationModel am = new AuthorizationModel();
                 am.setUser(ss[0]);
                 am.setSecurityEntity(ss[1]);

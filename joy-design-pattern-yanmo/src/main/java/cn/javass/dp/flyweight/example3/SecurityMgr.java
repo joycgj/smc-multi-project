@@ -53,7 +53,8 @@ public class SecurityMgr {
         }
         for (Flyweight fm : col) {
             //输出当前实例，看看是否同一个实例对象
-            System.out.println("fm==" + fm);
+            System.out.println("fm==" + fm + ", securityEntity=" + ((AuthorizationFlyweight) fm).getSecurityEntity()
+                + ", permit=" + ((AuthorizationFlyweight) fm).getPermit());
             if (fm.match(securityEntity, permit)) {
                 return true;
             }
