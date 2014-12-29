@@ -1,5 +1,6 @@
 package cn.javass.dp.factorymethod.example5;
 
+// OK
 public class ConcreteProduct implements Product {
 
     @Override
