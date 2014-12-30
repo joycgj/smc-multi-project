@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * 报纸对象，具体的目标实现
  */
-public class NewsPaper extends java.util.Observable {
+public class NewsPaper extends Observable {
     /**
      * 报纸的具体内容
      */
