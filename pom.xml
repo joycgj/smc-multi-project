@@ -16,6 +16,7 @@
         <module>joy-design-pattern-yanmo</module>
 		<module>joy-effective-java-2nd</module>
 		<module>joy-serializable-study</module>
+		<module>joy-thinking-in-java-4th</module>
     </modules>
 
     <properties>
