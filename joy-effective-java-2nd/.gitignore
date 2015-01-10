@@ -1,0 +1,17 @@
+# Package Files #
+*.war
+*.ear
+/target/
+/.idea/
+/.gradle/
+/serviceIntance*/
+/build/
+/log/
+/bin/
+*.class
+*.classpath
+*.settings
+*.tmp
+*.iml
+.project
+*.bak
