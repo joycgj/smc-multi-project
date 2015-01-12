@@ -14,9 +14,12 @@
 		<module>joy-restLiClientUtil</module>
 		<module>joy-d2-quickstart</module>
         <module>joy-design-pattern-yanmo</module>
+<<<<<<< HEAD
 		<module>joy-effective-java-2nd</module>
 		<module>joy-serializable-study</module>
+=======
 		<module>joy-thinking-in-java-4th</module>
+>>>>>>> e54a969694abc1010a318b74f1d44ef8c76ce4d3
     </modules>
 
     <properties>

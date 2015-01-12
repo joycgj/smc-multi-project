@@ -1,11 +1,18 @@
+<<<<<<< HEAD
 package concurrency;
 
+=======
+>>>>>>> 3970d77abfc4704eae38e2203289a6b3d4ea5480
 //: concurrency/E05_FibonacciSum.java
 /****************** Exercise 5 *****************
  * Modify Exercise 2 so that the task is a Callable
  * that sums the values of all the Fibonacci numbers.
  * Create several tasks and display the results.
  ***********************************************/
+<<<<<<< HEAD
+=======
+package concurrency;
+>>>>>>> 3970d77abfc4704eae38e2203289a6b3d4ea5480
 
 import java.util.*;
 import java.util.concurrent.*;
