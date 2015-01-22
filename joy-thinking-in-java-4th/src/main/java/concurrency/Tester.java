@@ -28,12 +28,10 @@ public abstract class Tester<C> {
     Integer[] writeData;
 
     Tester(String testId, int nReaders, int nWriters) {
-        this.testId = testId + " " +
-                nReaders + "r " + nWriters + "w";
+        this.testId = testId + " " + nReaders + "r " + nWriters + "w";
         this.nReaders = nReaders;
         this.nWriters = nWriters;
-        writeData = Generated.array(Integer.class,
-                new RandomGenerator.Integer(), containerSize);
+        writeData = Generated.array(Integer.class, new RandomGenerator.Integer(), containerSize);
         for (int i = 0; i < testReps; i++) {
             runTest();
             readTime = 0;
