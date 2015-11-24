@@ -18,6 +18,9 @@
 		<module>joy-serializable-study</module>
 		<module>joy-thinking-in-java-4th</module>
         <module>joy-java-program-xingning-youhua</module>
+        <module>joy-netty</module>
+        <module>joy-nio</module>
+        <module>joy-dynamic-property</module>
     </modules>
 
     <properties>
