@@ -1,0 +1,3 @@
+Delete more than one word
+I have a couple of questions
+This is-a line, with special/separated/words (and some more). 
