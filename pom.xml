@@ -21,6 +21,7 @@
         <module>joy-netty</module>
         <module>joy-nio</module>
         <module>joy-dynamic-property</module>
+        <module>dynamic-proxy</module>
     </modules>
 
     <properties>

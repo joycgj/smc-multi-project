@@ -1,4 +1,4 @@
-This is a standalone example that demonstrates how a simple D2 client-server works.
+This is a standalone example that demonstrates how a step1 D2 client-server works.
 
 In this example we have 2 D2 Clusters:
 1.) RecommendationService Cluster

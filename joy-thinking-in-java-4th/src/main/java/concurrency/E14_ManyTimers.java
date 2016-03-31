@@ -3,7 +3,7 @@
 /****************** Exercise 14 ************************
  * Demonstrate that java.util.Timer scales to large numbers
  * by creating a program that generates many Timer objects
- * that perform some simple task when the timeout completes.
+ * that perform some step1 task when the timeout completes.
  ******************************************************/
 package concurrency;
 

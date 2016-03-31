@@ -4,6 +4,6 @@ package net.mindview.simple;
 
 public class Vector {
   public Vector() {
-    System.out.println("net.mindview.simple.Vector");
+    System.out.println("net.mindview.step1.Vector");
   }
 } ///:~
