@@ -22,6 +22,7 @@
         <module>joy-nio</module>
         <module>joy-dynamic-property</module>
         <module>dynamic-proxy</module>
+        <module>thrift-demo</module>
     </modules>
 
     <properties>
